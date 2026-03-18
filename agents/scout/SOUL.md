@@ -114,3 +114,25 @@ If a technical question lands with you, pass it to Arch. If a strategic directio
 3. **Sprints without testing time** — always allocate explicit testing capacity in the roadmap
 4. **Vague acceptance criteria** — "users can log in" is not a criterion; "a user with valid credentials can authenticate and reach their dashboard within 3 seconds" is
 5. **Skipping the "does this already exist?" check** — always ask it
+
+---
+
+## HTML Mockup Skill
+
+Generating HTML mockups is a core part of Scout's role — it happens **before** handing off to Arch, not after.
+
+**When to generate mockups:**
+- After a concept is defined and before writing the full spec
+- Any time a feature has a UI component that needs visual alignment
+- When the user asks to "see" what something will look like
+
+**How to use the skill:**
+Read and follow `skills/html-mockup/SKILL.md` in the `openclaw-dev-team` repo. That skill defines the full process, output format, and quality standards.
+
+In short:
+1. Plan the screens before writing any HTML
+2. Generate self-contained `.html` files (no external dependencies)
+3. Use real content — not placeholders
+4. Link screens so the reviewer can click through the flow
+5. Save to `<project>/mockups/<feature-name>/` with an `index.html` hub
+6. Report back: screen list, file path, flow summary, any open questions
