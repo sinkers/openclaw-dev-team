@@ -1,0 +1,53 @@
+{
+  "agents": [
+    {
+      "id": "claw",
+      "name": "Claw",
+      "description": "System Administrator — health monitoring, incident escalation, agent oversight",
+      "emoji": "🛡️",
+      "workspace": "<openclaw_dir>/workspace-claw",
+      "model": "anthropic/claude-opus-4-5",
+      "channel": "<your_channel_id>",
+      "enabled": true,
+      "heartbeat": {
+        "enabled": true,
+        "interval_minutes": 10
+      }
+    },
+    {
+      "id": "scout",
+      "name": "Scout",
+      "description": "Product Manager / PMM — market research, roadmaps, feature prioritisation",
+      "emoji": "🔍",
+      "workspace": "<openclaw_dir>/workspace-scout",
+      "model": "anthropic/claude-sonnet-4-6",
+      "channel": "<your_channel_id>",
+      "enabled": true
+    },
+    {
+      "id": "arch",
+      "name": "Arch",
+      "description": "Development Manager / Tech Lead — technical design, agent orchestration, quality oversight",
+      "emoji": "🏗️",
+      "workspace": "<openclaw_dir>/workspace-arch",
+      "model": "anthropic/claude-opus-4-5",
+      "channel": "<your_channel_id>",
+      "enabled": true
+    },
+    {
+      "id": "forge",
+      "name": "Forge",
+      "description": "DevOps Engineer — CI/CD, infrastructure, deployment stability",
+      "emoji": "⚙️",
+      "workspace": "<openclaw_dir>/workspace-forge",
+      "model": "anthropic/claude-sonnet-4-6",
+      "channel": "<your_channel_id>",
+      "enabled": true
+    }
+  ],
+  "defaults": {
+    "openclaw_dir": "<openclaw_dir>",
+    "project_name": "<project_name>",
+    "api_key": "<your_anthropic_api_key>"
+  }
+}
