@@ -1,0 +1,20 @@
+{
+  "_comment": "Copy this to agent-roster.json and fill in your values. Add one entry per developer agent.",
+  "project": "<project name>",
+  "agents": [
+    {
+      "name": "max",
+      "role": "Flutter/iOS developer",
+      "session_key": "arch-to-max",
+      "openclaw_url": "http://<mac-ip>:18789",
+      "token": "<max-openclaw-token>"
+    },
+    {
+      "name": "dev-agent-2",
+      "role": "Backend developer",
+      "session_key": "arch-to-dev2",
+      "openclaw_url": "http://localhost:18789",
+      "token": "<token>"
+    }
+  ]
+}

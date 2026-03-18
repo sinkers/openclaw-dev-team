@@ -1,0 +1,6 @@
+# Real roster contains tokens — never commit
+config/agent-roster.json
+
+# Local environment overrides
+.env
+*.env.local

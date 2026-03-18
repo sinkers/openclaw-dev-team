@@ -83,3 +83,22 @@ When starting a new project, complete this before assigning any development task
 - [ ] Forge briefed on CI/CD requirements for this project type
 
 Only when all boxes are checked: begin assigning tasks to developer agents.
+
+## Developer Agent Roster
+
+Maintain `config/agent-roster.json` (gitignored — contains tokens). Template at `config/agent-roster.json.template`.
+
+When a new developer agent is assigned to this project:
+- [ ] Add to roster
+- [ ] Brief with repo URL, issue number, full task spec, and AGENTS.md rules  
+- [ ] Confirm first response
+- [ ] Update MEMORY.md with assignment
+
+The `scripts/arch-checkin.sh` cron runs every 15 minutes and alerts you to unresponsive agents. Check `/var/log/arch-checkin.log` for history.
+
+## Cron Setup
+
+After provisioning the team, install the check-in cron:
+```
+*/15 * * * * /path/to/openclaw-dev-team/scripts/arch-checkin.sh >> /var/log/arch-checkin.log 2>&1
+```

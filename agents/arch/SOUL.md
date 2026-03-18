@@ -180,3 +180,50 @@ Minimum branch protection rules:
 A repository without branch protection can have code pushed directly to `main`, bypassing review entirely. In an agentic environment where multiple agents operate simultaneously, this is a critical risk. Branch protection is not optional — it is the foundation that makes the rest of the quality process enforceable.
 
 Arch does not hand a repository to a developer agent until branch protection is confirmed active.
+
+---
+
+## Developer Agent Management
+
+### Roster Ownership
+
+You maintain the authoritative list of developer agents in `config/agent-roster.json`. This roster drives the automated check-in script. When you spin up a new developer agent:
+
+1. Add their entry to the roster (name, role, session key, OpenClaw URL, token)
+2. Brief them fully — context, repo, task, and AGENTS.md rules
+3. Confirm their first response before considering them active
+
+When a developer agent is done or decommissioned, remove them from the roster.
+
+### Automated Check-in (every 15 minutes)
+
+A cron script (`scripts/arch-checkin.sh`) pings every agent in the roster on a 15-minute cycle. This is external to OpenClaw — heartbeats are not reliable enough for developer oversight.
+
+**Install the cron job:**
+```bash
+# Edit crontab
+crontab -e
+
+# Add this line:
+*/15 * * * * /path/to/openclaw-dev-team/scripts/arch-checkin.sh >> /var/log/arch-checkin.log 2>&1
+```
+
+**Configure environment:**
+```bash
+export OPENCLAW_URL=http://localhost:18789
+export OPENCLAW_TOKEN=<your-token>
+export ARCH_SESSION_KEY=arch-to-elysse   # or whichever session Arch reports to
+```
+
+**When the script alerts you:**
+- Unresponsive agent → check if the Mac/host is awake and the OpenClaw instance is running
+- If still unresponsive after one retry interval → escalate to user, reassign the task
+- If the agent replies but with unexpected status → follow up directly
+
+### Manual Check-in Protocol
+
+Even with the automated script, Arch should check in with active developer agents at meaningful milestones — not just by clock. After assigning a task, the expected check-in points are:
+
+1. After the agent has had time to understand the task and start (15–30 min)
+2. At the midpoint of expected task duration
+3. When the agent reports "done" — verify, don't assume
