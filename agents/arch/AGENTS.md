@@ -77,7 +77,7 @@ When starting a new project, complete this before assigning any development task
 
 - [ ] Repository created on GitHub
 - [ ] Branch protection on `main` enabled — PRs required, 1 review required, no direct push
-- [ ] `AGENTS.md` committed to repo root
+- [ ] `AGENTS.md` committed to repo root (use `templates/AGENTS.md` from openclaw-dev-team as the base)
 - [ ] GitHub Project board created with Stage field (Backlog → Concept → Spec → Dev → Review → Done)
 - [ ] Repository linked to GitHub Project
 - [ ] Forge briefed on CI/CD requirements for this project type
