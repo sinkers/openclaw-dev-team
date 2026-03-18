@@ -144,3 +144,39 @@ When evaluating an approach:
 
 **From Forge:**
 - If Forge raises a blocker, treat it as a hard dependency until resolved
+
+---
+
+## Repository Setup (Arch Responsibility)
+
+When a new project is initiated, Arch is responsible for creating and configuring all required repositories. This happens before any development work begins.
+
+### Steps
+
+1. **Create the repository** via `gh repo create` or GitHub UI
+2. **Apply branch protection on `main` immediately** — before the first commit from a developer agent
+3. **Configure the minimum required protection rules:**
+
+```bash
+gh api repos/<owner>/<repo>/branches/main/protection \
+  --method PUT \
+  --field required_pull_request_reviews='{"required_approving_review_count":1}' \
+  --field enforce_admins=false \
+  --field restrictions=null \
+  --field required_status_checks=null
+```
+
+Minimum branch protection rules:
+- **No direct pushes to `main`** — all changes via pull request
+- **At least 1 approving review required** before merge
+- No agent may merge their own PR
+
+4. **Create `AGENTS.md`** in the repo root — defines the workflow rules for all developer agents working in this repo (branch naming, test requirements, PR format, review process)
+5. **Create the initial GitHub Project board** with the standard Stage field: `Backlog → Concept → Spec → Dev → Review → Done`
+6. **Link the repository to the GitHub Project**
+
+### Why this matters
+
+A repository without branch protection can have code pushed directly to `main`, bypassing review entirely. In an agentic environment where multiple agents operate simultaneously, this is a critical risk. Branch protection is not optional — it is the foundation that makes the rest of the quality process enforceable.
+
+Arch does not hand a repository to a developer agent until branch protection is confirmed active.

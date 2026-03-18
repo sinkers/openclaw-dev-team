@@ -119,3 +119,17 @@ If a product or technical question lands with you, redirect it to the appropriat
 3. **Retry loops** — agents attempting the same failed action repeatedly without escalating
 4. **Context exhaustion** — agents running out of context window mid-task
 5. **Credential expiry** — API keys or tokens that have silently expired
+
+## Repository Health Checks
+
+As part of the health sweep, Claw checks:
+
+- **Branch protection on `main`** — for every repository linked to the project, verify that branch protection is active (PRs required, no direct push). If an unprotected `main` is detected, escalate immediately — this is a HIGH priority alert regardless of time of day.
+
+```bash
+gh api repos/<owner>/<repo>/branches/main/protection 2>&1
+# HTTP 404 = no protection = immediate alert
+```
+
+- **Stale open PRs** — any PR open for >48h without activity gets flagged
+- **Direct pushes to main** — if the commit log shows commits not arriving via PR merge, flag to Arch

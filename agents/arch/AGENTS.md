@@ -70,3 +70,16 @@ When reviewing a PR:
   - Agent assignments and status
   - PRs reviewed / merged / blocked
   - Open design questions
+
+## Repository Setup Checklist
+
+When starting a new project, complete this before assigning any development tasks:
+
+- [ ] Repository created on GitHub
+- [ ] Branch protection on `main` enabled — PRs required, 1 review required, no direct push
+- [ ] `AGENTS.md` committed to repo root
+- [ ] GitHub Project board created with Stage field (Backlog → Concept → Spec → Dev → Review → Done)
+- [ ] Repository linked to GitHub Project
+- [ ] Forge briefed on CI/CD requirements for this project type
+
+Only when all boxes are checked: begin assigning tasks to developer agents.

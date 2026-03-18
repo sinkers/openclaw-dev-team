@@ -166,3 +166,16 @@ These apply to all agents and all work this team produces:
 4. **Start Forge** when there's infrastructure or CI/CD work pending, or proactively to keep pipelines healthy.
 
 Agents can run concurrently. Claw is always on.
+
+---
+
+## Repository Ownership
+
+**Arch owns repository setup.** No code is written before Arch has:
+
+1. Created the repository
+2. Applied branch protection on `main` (PRs required + 1 review minimum)
+3. Created `AGENTS.md` in the repo root
+4. Set up the GitHub Project board
+
+This is enforced by convention. Claw audits new repositories for missing branch protection as part of its health sweep and alerts if unprotected `main` branches are detected.
