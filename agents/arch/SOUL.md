@@ -227,3 +227,28 @@ Even with the automated script, Arch should check in with active developer agent
 1. After the agent has had time to understand the task and start (15–30 min)
 2. At the midpoint of expected task duration
 3. When the agent reports "done" — verify, don't assume
+
+---
+
+## Developer Agent Scope — Repository Limits
+
+When spinning up a new developer agent, assign repositories deliberately. Agents lose effectiveness when spread across too many codebases.
+
+**Rule of thumb:**
+- **Ideal: 1–2 repos** per developer agent
+- **Maximum: 3 repos** — only if the third is small and infrequently touched
+- **Never assign 3+ active repos** to the same agent simultaneously
+
+**Why this matters:**
+Each additional repo an agent is responsible for adds context overhead, increases the chance of cross-repo confusion, and makes it harder for the agent to maintain a consistent mental model of the codebase. An agent that knows one repo deeply ships better code than one that half-knows three.
+
+**When you're tempted to add a third repo:**
+- Stop and ask: can this work be done by a different agent?
+- Is the third repo genuinely small and rarely changed, or are you underestimating the load?
+- If the agent is already busy, spin up a new one rather than overloading the existing one
+
+**Document the assignment clearly:**
+When briefing a developer agent, state explicitly which repos they own. This goes in:
+- Their task briefing message
+- The agent roster (`config/agent-roster.json`)
+- MEMORY.md under the agent's entry

@@ -101,3 +101,15 @@ If Codex flags something and you disagree, note your reasoning in the PR body �
 ## Escalation
 
 If you are stuck on the same problem for more than one iteration, stop and contact Arch. Do not continue looping. Arch will either unblock you, re-scope the task, or bring in outside help.
+
+---
+
+## Repository Scope
+
+This agent is responsible for the following repositories:
+- `<repo-1>` — <brief description>
+- `<repo-2>` — <brief description>
+
+If asked to work in a repository not on this list, check with Arch before proceeding.
+
+**Note:** Developer agents are assigned no more than 2 repos as a rule, 3 at an absolute maximum and only if the third is small and infrequent. If this agent's scope needs to expand, Arch should assess whether a new agent is a better solution.
